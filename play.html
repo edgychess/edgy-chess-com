@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!--
+/*
+ * Chess variant: Edgy Chess
+ *
+ * Version: 1.0
+ * Author: Marc Bernard, 2017-08-01
+ *
+ * Copyright(c) 2017-2020. All rights reserved.
+ *
+ * http://www.edgychess.com/
+ */
+-->
+<html lang="en">
+  <head>
+	<title>Edgy Chess by Edge and Marc Bernard</title>
+    <meta charset="utf-8">
+	<meta name="robots"             content="index, follow">
+	<meta name="viewport"           content="width=device-width"/>
+	<meta name="twitter:card"       content="summary" />
+	<meta name="description"        content="Edgy Chess is a new and edgy chess variant that looks like chess but plays like a different game"/>
+	<meta name="author"             content="Edge and Marc Bernard"/>
+	<meta name="keywords"           content="chess,variant,edge,corner"/>
+	<meta property="og:type"        content="website"/>
+	<meta property="og:title"       content="Edgy Chess - A New and Edgy Chess Variant for Everyone" />
+	<meta property="og:description" content="Edgy Chess is a new and edgy chess variant that looks like chess but plays like a different game"/>
+	<meta property="og:url"         content="http://www.edgychess.com"/>
+	<meta property="og:image"       content="http://www.edgychess.com/images/edgy-chess-2d.png"/>
+	<link rel="stylesheet"          href="https://fonts.googleapis.com/css?family=Righteous" type="text/css" media="all" />
+	<link rel="stylesheet"          href="https://fonts.googleapis.com/css?family=Open+Sans" type="text/css" media="all" />
+	<link rel="stylesheet"          href="edgy-chess.css" />
+	<link rel="icon"                href="favicon.png" type="image/png" />
+
+	<script
+	  src="https://code.jquery.com/jquery-3.5.0.min.js"
+	  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+	  crossorigin="anonymous"></script>
+
+	<!--script src="edgy-chess.js"></script-->
+
+	<script src="dist/browser/jocly.js"></script>
+
+	<script src="edgy-chess-control.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-165238093-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-165238093-1');
+	</script>
+  </head>
+
+  <body>
+	<div id="container">
+
+		<div id="jocly-applet">
+			<div id="progress-bar"></div>
+		</div>
+
+		<div id="controls" class="sidepanel">
+			<div id="game-panel" class="header-box">
+				<div id="game-title">
+					Edgy Chess<br/>
+					<div id="game-subtitle">by Edge and Marc Bernard</div>
+				</div>
+				<div class="links">
+					<a href="javascript:void(0);" id="game-rules">Rules</a> /
+					<a href="javascript:void(0);" id="game-credits">Credits</a>
+				</div>
+			</div>
+			<div id="status-panel" class="box">
+				<h2>Status</h2>
+				<div id="box-inside-status" class="box-inside-open">
+					<div id="game-status">Starting up...<img id="game-loading" alt="Wait to Load" src="images/loading.gif" width="32" height="32" /></div>
+				</div>
+			</div>
+			<div id="controls-panel" class="box">
+				<h2>Controls<span id="box-toggle-controls" class="box-toggle box-toggle-close"></span></h2>
+				<div id="box-inside-controls" class="box-inside-close">
+					<button id="restart">Restart Game</button>
+					<button id="takeback">Take Back Move</button>
+					<button id="fullscreen">Full Screen</button>
+					<button id="save">Save</button>
+					<input type="file" id="fileElem" accept="application/json" style="display:none" />
+					<button id="load">Load</button>
+					<button id="snapshot">Snapshot</button>
+					<br/><br/>
+					<div id="game-config">
+						<select id="mode">
+							<option value="self-self">Self / Self</option>
+							<option value="self-comp">Self / Computer</option>
+							<option value="comp-self">Computer / Self</option>
+							<option value="comp-comp">Computer / Computer</option>
+						</select>
+						<br/>
+						<label id="level-a" for="select-level-a"><br/>Computer (A) Level
+							<select id="select-level-a"></select>
+						</label>
+						<label id="level-b" for="select-level-b"><br/>Computer (B) Level
+							<select id="select-level-b"></select>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div id="options-panel" class="box">
+				<h2>Options<span id="box-toggle-options" class="box-toggle box-toggle-close"></span></h2>
+				<div id="box-inside-options" class="box-inside-close">
+					<div id="view-options">
+						<label id="options-skins" for="options-skin">
+							View
+							<select id="options-skin"></select>
+							<select id="options-view-as">
+								<option value="player-a">View as Player A</option>
+								<option value="player-b">View as Player B</option>
+							</select>
+						</label>
+						<br/>
+						<label id="options-notation" for="options-notation-input">
+							<input id="options-notation-input" type="checkbox" /> Notation
+						</label>
+						<label id="options-moves" for="options-moves-input">
+							<input id="options-moves-input" type="checkbox" /> Show Possible Moves
+						</label>
+						<label id="options-autocomplete" for="options-autocomplete-input">
+							<input id="options-autocomplete-input" type="checkbox" /> Auto-complete Moves
+						</label>
+						<label id="options-sounds" for="options-sounds-input">
+							<input id="options-sounds-input" type="checkbox" /> Sounds
+						</label>
+						<label id="options-anaglyph" for="options-anaglyph-input">
+							<input id="options-anaglyph-input" type="checkbox" /> View for 3D-Glasses
+						</label>
+						<label id="options-panorama" for="panorama-select">
+							<br/>360 Panorama
+							<!--input type="file" id="file360Elem" accept="application/json" style="display:none"-->
+							<!--button id="panorama-button">Local</button-->
+							<select id="panorama-select">
+								<option value="">--</option>
+								<option value="beach">Beach</option>
+								<option value="cabin">Cabin</option>
+								<option value="coast">Coast</option>
+								<option value="earth">Earth</option>
+								<option value="factory">Factory</option>
+							</select>
+						</label>
+					</div>
+				</div>
+			</div>
+			<div id="camera-panel" class="box">
+				<h2>Camera<span id="box-toggle-camera" class="box-toggle box-toggle-close"></span></h2>
+				<div id="box-inside-camera" class="box-inside-close">
+					<div>Jump to...<br/>
+						<button id="view0">Corner</button>
+						<button id="view1">Top</button>
+						<button id="view2">Front</button>
+						<button id="view3">Close-up</button>
+					</div>
+					<br/>
+					<div>Fly to...<br/>
+						<button id="animate0">Corner</button>
+						<button id="animate1">Top</button>
+						<button id="animate2">Front</button>
+						<button id="animate3">Close-up</button>
+					</div>
+					<!--button id="get-camera">Get Camera</button>
+					<br/>
+					<div id="camera-position"></div-->
+				</div>
+			</div>
+			<div id="link-panel" class="footer">
+				<div id="links-other" class="links" style="display:none">
+					<a href="https://github.com/mi-g/jocly" target="_blank">Powered by Jocly</a> /
+					<a href="javascript:void(0);" id="other-games">Other Games</a><br>
+					<a href="/">&laquo; Back to Marc Bernard Tools</a>
+				</div>
+				<div id="links-edgy-chess" class="links" style="display:none">
+					<a href="/">&laquo; Go to Edgy Chess Website</a>
+				</div>
+			</div>
+		</div>  <!--controls -->
+
+		<div id="games" class="sidepanel" style="display:none">
+			<div>
+				<div>
+					<div class="header-box">
+						<div id="game-header">List of Games</div>
+						<div class="links">
+							<a href="javascript:void(0);" id="close-games">&laquo; Back to Game</a>
+						</div>
+					</div>
+					<div id="game-list"></div>
+				</div>
+			</div>
+		</div> <!--games-->
+
+		<div id="rules" class="sidepanel" style="display:none">
+			<div>
+				<div>
+					<div class="header-box">
+						<div id="rule-header"></div>
+						<div class="links">
+							<a href="javascript:void(0);" id="close-rules">&laquo; Back to Game</a>
+						</div>
+					</div>
+					<div id="rule-text"></div>
+				</div>
+			</div>
+		</div> <!--rules-->
+
+		<div id="jocly-sounds" style="display: none;"></div>
+
+	</div> <!--container-->
+
+  </body>
+</html>

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<!--
+/*
+ * Chess variant: Edgy Chess
+ *
+ * Version: 1.0
+ * Author: Marc Bernard, 2017-08-01
+ *
+ * Copyright(c) 2017-2020. All rights reserved.
+ *
+ * http://www.edgychess.com/
+ */
+-->
+<html lang="en">
+  <head>
+	<title>Edgy Chess by Edge and Marc Bernard - Rules</title>
+    <meta charset="utf-8">
+	<meta name="robots"             content="index, follow">
+	<meta name="viewport"           content="width=device-width"/>
+	<meta name="twitter:card"       content="summary" />
+	<meta name="description"        content="Edgy Chess is a new and edgy chess variant that looks like chess but plays like a different game"/>
+	<meta name="author"             content="Edge and Marc Bernard"/>
+	<meta name="keywords"           content="chess,variant,edge,corner"/>
+	<meta property="og:type"        content="website"/>
+	<meta property="og:title"       content="Edgy Chess - A New and Edgy Chess Variant for Everyone" />
+	<meta property="og:description" content="Edgy Chess is a new and edgy chess variant that looks like chess but plays like a different game"/>
+	<meta property="og:url"         content="http://www.edgychess.com"/>
+	<meta property="og:image"       content="http://www.edgychess.com/images/edgy-chess-2d.png"/>
+	<link rel="stylesheet"          href="https://fonts.googleapis.com/css?family=Righteous" type="text/css" media="all" />
+	<link rel="stylesheet"          href="https://fonts.googleapis.com/css?family=Open+Sans" type="text/css" media="all" />
+	<link rel="stylesheet"          href="edgy-chess.css" />
+	<link rel="icon"                href="favicon.png" type="image/png" />
+
+	<script
+	  src="https://code.jquery.com/jquery-3.5.0.min.js"
+	  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+	  crossorigin="anonymous"></script>
+
+	<script src="edgy-chess.js"></script>
+  </head>
+
+  <body>
+	<div id="container" class="fullpage">
+		<nav class="header">
+			<p id="title" class="menuitem"><img id="favicon" src="favicon.png" alt="Edgy Chess Icon" width="48" height="48"/><a href="index.html">Edgy Chess</a></p>
+			<ul class="menu">
+				<li class="menuitem"><a href="play.html">Play</a></li>
+				<li class="menuitem"><a href="rules.html">Rules</a></li>
+				<li class="menuitem"><a href="about.html">About</a></li>
+				<li class="menuitem"><a href="donate.html" class="button">Donate</a></li>
+			</ul>
+		</nav>
+
+		<div class="main">
+<!--BEGIN-->
+			<!-- Global site tag (gtag.js) - Google Analytics -->
+			<script async src="https://www.googletagmanager.com/gtag/js?id=UA-165238093-1"></script>
+			<script>
+			  window.dataLayer = window.dataLayer || [];
+			  function gtag(){dataLayer.push(arguments);}
+			  gtag('js', new Date());
+			  gtag('config', 'UA-165238093-1');
+			</script>
+
+			<div class="box">
+
+			<p class="center"><img class="board3d" alt="3D View of Edgy Chess Setup" src="images/Edgy_Chess_Setup_3d.png" width="500"/></p>
+
+			<h1>Rules for Edgy Chess (tl;dr)</h1>
+
+			<p class="center">Turn your board 45 degrees and setup the pieces starting with your king in your corner as shown below:</p>
+
+			<p class="center"><img class="board2d" alt="2D View of Edgy Chess Setup" src="images/setup.png"/></p>
+
+			<p class="center">Pawns move diagonally forward <i>one</i> step at a time (<img src="images/move-black-small.png" alt="Move"/>)
+			and capture to the side of their path (<img src="images/capture-black-small.png" alt="Capture"/>).<br/>
+			Pawns are promoted on the opponents non-pawn fields (<img src="images/promote-white-small.png" alt="Promote"/>).<br/><br/>
+			Castling is allowed but there is <i>no en passant</i>.<br/><br/>
+			All other rules are like in classic chess.</p>
+
+			<h3>Enjoy!</h3>
+
+			</div>
+			<div class="box">
+
+			<h1>Overview</h1>
+
+			<p><b>Edgy Chess</b> is a variant of Regular Orthodox Classic Western Chess. It uses the same geometry, same type of
+			pieces, same number of pieces, castling, an in general the same rules as classic chess. It differs from classic chess
+			in the initial setup of the board as well as the movement and promotion of Pawns. </p>
+
+			<p>This all makes a lot of sense when you see the initial board setup with the corner pointing towards you. The beauty
+			of this variant is that it can be played with any classic chess board and pieces available in the world and is easy to
+			learn for anyone who knows how to play chess. It's actually easier to learn than classic chess since there's no en
+			passant rule. The setup also leads to more aggressive play since opponent pieces are on average a bit closer together.</p>
+
+			<p>It looks like chess but it is a new game. Same, same, but different.</p>
+
+			</div>
+			<div class="box">
+
+			<h1>Rules</h1>
+
+			<p><i>Note: Differences to classic chess are shown in italic.</i></p>
+
+			<h2>Setup</h2>
+
+			<p><b>Edgy Chess</b> is played on a chessboard, a square board divided into 64 squares (eight-by-eight) of alternating color, which
+			is like the board used in draughts (checkers). No matter what the actual colors of the board, the lighter-colored
+			squares are called "light" or "white", and the darker-colored squares are called "dark" or "black". Sixteen "white" and
+			sixteen "black" pieces are placed on the board at the beginning of the game. <i>The board is placed so that a dark
+			corner square is in front of each player.</i></p>
+
+			<p class="center"><img class="board2d" alt="2D View of Edgy Chess Setup" src="images/setup.png"/>
+			<label>Setup</label></p>
+
+			<p>Each player controls sixteen pieces:</p>
+
+			<table>
+				<thead>
+					<tr>
+						<td>Name</td><td>Count</td><td>White Symbols</td><td>Black Symbols</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="piecename">King</td>
+						<td>1</td>
+						<td><img class="piece" alt="White King" src="images/king-white.png" width="34" height="34"/></td>
+						<td><img class="piece" alt="Black King" src="images/king-black.png" width="34" height="34"/></td>
+					</tr>
+					<tr>
+						<td class="piecename">Queen</td>
+						<td>1</td>
+						<td><img class="piece" alt="White Queen" src="images/queen-white.png" width="34" height="34"/></td>
+						<td><img class="piece" alt="Black Queen" src="images/queen-black.png" width="34" height="34"/></td>
+					</tr>
+					<tr>
+						<td class="piecename">Rook</td>
+						<td>2</td>
+						<td><img class="piece" alt="White Rook" src="images/rook-white.png" width="34" height="34"/></td>
+						<td><img class="piece" alt="Black Rook" src="images/rook-black.png" width="34" height="34"/></td>
+					</tr>
+					<tr>
+						<td class="piecename">Bishop</td>
+						<td>2</td>
+						<td><img class="piece" alt="White Bishop" src="images/bishop-white.png" width="34" height="34"/></td>
+						<td><img class="piece" alt="Black Bishop" src="images/bishop-black.png" width="34" height="34"/></td>
+					</tr>
+					<tr>
+						<td class="piecename">Knight</td>
+						<td>2</td>
+						<td><img class="piece" alt="White Knight" src="images/knight-white.png" width="34" height="34"/></td>
+						<td><img class="piece" alt="Black Knight" src="images/knight-black.png" width="34" height="34"/></td>
+					</tr>
+					<tr>
+						<td class="piecename">Pawn</td>
+						<td>8</td>
+						<td><img class="piece" alt="White Pawn" src="images/pawn-white.png" width="34" height="34"/></td>
+						<td><img class="piece" alt="Black Pawn" src="images/pawn-black.png" width="34" height="34"/></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p>At the beginning of the game, the pieces are arranged as shown in the diagram. <i>The king is placed in the corner
+			first. Then the queen, a bishop, a knight, and a rook are placed along the left edge. A bishop, a knight, and a rook are
+			placed along the right edge. The pawns are placed in front of those pieces (see diagram). The phrases to remember this
+			setup, are "king in the corner" and "black in front". The latter refers to setting up the board so that the square
+			closest to each player is black.</i></p>
+
+			</div>
+			<div class="box">
+
+			<h1>Play of the Game</h1>
+
+			<p>The player controlling the white army is named "White"; the player controlling the black pieces is named "Black".
+			White moves first, then players alternate moves. Making a move is required; it is not legal to skip a move, even when
+			having to move is detrimental. Play continues until a king is checkmated, a player resigns, or a draw is declared, as
+			explained below. In addition, if the game is being played under a time control, then players who exceed their time limit
+			lose the game.</p>
+
+			<h2>Movement</h2>
+
+			<h3>Basic moves</h3>
+
+			<p>Each chess piece has its own method of movement. Moves are made to vacant squares except when capturing an opponent's
+			piece.</p>
+
+			<p>Apart from any movement of the knight and the occasional castling maneuver, pieces cannot jump over each
+			other. When a piece is captured (or taken), the attacking piece replaces the enemy piece on its square (<i>en passant
+			does not exist in Edgy Chess</i>). The captured piece is thus removed from the game and may not be returned to play for
+			the remainder of the game. The king can be put in check but cannot be captured (see below).<p>
+
+			<h4>
+				<img class="piece" alt="King" src="images/king-white.png" width="34" height="34"/>
+				King
+				<img class="piece" alt="King" src="images/king-black.png" width="34" height="34"/>
+			</h4>
+
+			<p>The <span class="piecename">king</span> can move exactly one square horizontally, vertically, or diagonally. Only
+			 once per player, per game, is a king allowed to make a special move known as castling (see below).</p>
+
+			<p class="center"><img class="board2d" alt="King" src="images/king.png"/>
+			<label>King movements</label></p>
+
+			<br style="clear: both;">
+
+			<h4>
+				<img class="piece" alt="Rook" src="images/rook-white.png" width="34" height="34"/>
+				<img class="piece" alt="Rook" src="images/rook-black.png" width="34" height="34"/>
+				Rooks
+				<img class="piece" alt="Rook" src="images/rook-black.png" width="34" height="34"/>
+				<img class="piece" alt="Rook" src="images/rook-white.png" width="34" height="34"/>
+			</h4>
+
+			<p>The <span class="piecename">rook</span> moves any number of vacant squares vertically or horizontally. It also is
+			moved while castling.</p>
+
+			<p class="center"><img class="board2d" alt="Rook" src="images/rook.png"/>
+			<label>Rook movements</label></p>
+
+			<br style="clear: both;">
+
+			<h4>
+				<img class="piece" alt="Bishop" src="images/bishop-black.png" width="34" height="34"/>
+				<img class="piece" alt="Bishop" src="images/bishop-white.png" width="34" height="34"/>
+				Bishops
+				<img class="piece" alt="Bishop" src="images/bishop-white.png" width="34" height="34"/>
+				<img class="piece" alt="Bishop" src="images/bishop-black.png" width="34" height="34"/>
+			</h4>
+
+			<p>The <span class="piecename">bishop</span> moves any number of vacant squares in any diagonal direction.</p>
+
+			<p class="center"><img class="board2d" alt="Bishop" src="images/bishop.png"/>
+			<label>Bishop movements</label></p>
+
+			<br style="clear: both;">
+
+			<h4>
+				<img class="piece" alt="Queen" src="images/queen-black.png" width="34" height="34"/>
+				Queen
+				<img class="piece" alt="Queen" src="images/queen-white.png" width="34" height="34"/>
+			</h4>
+
+			<p>The <span class="piecename">queen</span> can move any number of vacant squares diagonally, horizontally, or
+			vertically.</p>
+
+			<p class="center"><img class="board2d" alt="Queen" src="images/queen.png"/>
+			<label>Queen movements</label></p>
+
+			<br style="clear: both;">
+
+			<h4>
+				<img class="piece" alt="Knight" src="images/knight-white.png" width="34" height="34"/>
+				<img class="piece" alt="Knight" src="images/knight-white.png" width="34" height="34"/>
+				Knights
+				<img class="piece" alt="Knight" src="images/knight-black.png" width="34" height="34"/>
+				<img class="piece" alt="Knight" src="images/knight-black.png" width="34" height="34"/>
+			</h4>
+
+			<p>The <span class="piecename">knight</span> moves to the nearest square not on the same rank, file, or diagonal. In
+			other words, the knight moves two squares horizontally then one square vertically, or one square horizontally then two
+			squares vertically. Its move is not blocked by other pieces: it jumps to the new location.</p>
+
+			<p class="center"><img class="board2d" alt="Knight" src="images/knight.png"/>
+			<label>Knight movements</label></p>
+
+			<br style="clear: both;">
+
+			<h4>
+				<img class="piece" alt="Pawn" src="images/pawn-black.png" width="34" height="34"/>
+				<img class="piece" alt="Pawn" src="images/pawn-black.png" width="34" height="34"/>
+				Pawns
+				<img class="piece" alt="Pawn" src="images/pawn-white.png" width="34" height="34"/>
+				<img class="piece" alt="Pawn" src="images/pawn-white.png" width="34" height="34"/>
+			</h4>
+
+			<p><span class="piecename">Pawns</span> have the most complex rules of movement:</p>
+
+			<ul>
+				<li>A pawn can move forward <i>diagonally</i> one square, if that square is unoccupied. <i>It's not allowed to move
+				pawns two squares from the initial position.</i> A pawn cannot move backwards.</li>
+				<li>Pawns are the only pieces that capture differently from how they move. They can capture an enemy piece on either of
+				the two adjacent spaces to the <i>space they are on</i> (i.e., the two squares <i>orthogonally</i> in front of them) but
+				cannot move to these spaces if they are vacant.</li>
+				<li>The pawn is also involved in a special move called promotion (see below).</li>
+				<li><i>Note: En passant is not available.</i></li>
+			</ul>
+
+			<p class="center"><img class="board2d" alt="Pawn" src="images/pawn-move.png"/>
+			<label>Pawn movements</label></p>
+
+			<h4>
+				<img class="piece" alt="King" src="images/king-white.png" width="34" height="34"/>
+				<img class="piece" alt="Rook" src="images/rook-white.png" width="34" height="34"/>
+				Castling
+				<img class="piece" alt="Rook" src="images/rook-black.png" width="34" height="34"/>
+				<img class="piece" alt="King" src="images/king-black.png" width="34" height="34"/>
+			</h4>
+
+			<p>Castling consists of moving the king two squares towards a rook, then placing the rook on the other side of the king,
+			adjacent to it. Castling is only permissible if all of the following conditions hold:</p>
+
+			<ul>
+				<li>The king and rook involved in castling must not have previously moved;</li>
+				<li>There must be no pieces between the king and the rook;</li>
+				<li>The king may not currently be in check, nor may the king pass through or end up in a square that is under attack by
+				an enemy piece (though the rook is permitted to be under attack and to pass over an attacked square);</li>
+			</ul>
+
+			<p class="center"><img class="board2d" alt="Starting Positions for Castling" src="images/castle-from.png"/>
+			<label>Positions of pieces before castling</label></p>
+
+			<p class="center"><img class="board2d" alt="End Positions for Castling" src="images/castle-to.png"/>
+			<label>Positions of king and rook after queenside (white) and kingside (black) castling</label></p>
+
+			<h4>
+				<img class="piece" alt="Pawn" src="images/pawn-black.png" width="34" height="34"/>
+				<i>En Passant</i>
+				<img class="piece" alt="Pawn" src="images/pawn-white.png" width="34" height="34"/>
+			</h4>
+
+			<i>En passant is not available in Edgy Chess.</i>
+
+			<h4>
+				<img class="piece" alt="Pawn" src="images/pawn-white.png" width="34" height="34"/>
+				Pawn Promotion
+				<img class="piece" alt="Pawn" src="images/pawn-black.png" width="34" height="34"/>
+			</h4>
+
+			<p>If a pawn advances to a <i>promotion field (see diagram)</i>, it is then promoted (converted) to a queen, rook,
+			bishop, or knight of the same color, the choice being at the discretion of its player (a queen is usually chosen). The
+			choice is not limited to previously captured pieces. Hence it is theoretically possible for a player to have up to nine
+			queens or up to ten rooks, bishops, or knights if all their pawns are promoted. If the desired piece is not
+			available, the player should call the arbiter to provide the piece.</p>
+
+			<p class="center"><img class="board2d" alt="Pawn" src="images/pawn-promo.png"/>
+			<label>Pawn promotion</label></p>
+
+			<p>White pawns promote on squares e8-h8-h4 (marked with white diamonds); black pawns on a5-a1-d1 (marked with black
+			diamonds). Note that the pawns that start on a6 and h3 cannot promote without moving toward the center of the board via
+			capturing.</p>
+
+			<h2>Check</h2>
+
+			<p>A king is in check when it is under attack by one or more enemy pieces. A piece unable to move because it would place
+			its own king in check (it is pinned against its own king) may still deliver check to the opposing player.</p>
+
+			<p class="center"><img class="board2d" alt="Check" src="images/check.png"/>
+			<label>Black's king is in check. It can get out of check by moving to an unattacked square. Black can also parry
+			the check by moving the bishop to e5 or the knight to f4 to block the check, or by capturing the white bishop with the knight.</label></p>
+
+			<p>A player may not make any move which places or leaves his king in check. The possible ways to get out of check are:</p>
+
+			<ul>
+				<li>Move the king to a square where it is not threatened.</li>
+				<li>Capture the threatening piece (possibly with the king).</li>
+				<li>Block the check by placing a piece between the king and the opponent's threatening piece.</li>
+			</ul>
+
+			</div>
+			<div class="box">
+
+			<h1>End of the Game</h1>
+
+			<h2>Checkmate</h2>
+
+			<p>If a player's king is placed in check and there is no legal move that player can make to escape check, then the king
+			is said to be checkmated, the game ends, and that player loses. Unlike other pieces, the king is never actually captured
+			or removed from the board because checkmate ends the game.</p>
+
+			<p class="center"><img class="board2d" alt="Checkmate" src="images/checkmate.png"/>
+			<label>White is checkmated; Black wins</label></p>
+
+			<p>The diagram shows a typical checkmate position. The white king is threatened by the black queen; every square to
+			which the king could move is also threatened; it cannot capture the queen, because it would then be threatened by the
+			rook.</p>
+
+			<h2>Draws</h2>
+
+			<p>The game ends in a draw if any of these conditions occur:</p>
+
+			<ul>
+				<li>The game is automatically a draw if the player to move is not in check but has no legal move. This situation is
+				called a stalemate. An example of such a position is shown in the diagram to the right.</li>
+				<li>The game is immediately drawn when there is no possibility of checkmate for either side with any series of legal
+				moves. This draw is often due to insufficient material, including the endgames
+				<ul>
+					<li>king against king;</li>
+					<li>king against king and bishop;</li>
+					<li>king against king and knight;</li>
+					<li>king and bishop against king and bishop, with both bishops on diagonals of the same color.</li>
+				</ul>
+				</li>
+				<li>Both players agree to a draw after one of the players makes such an offer.</li>
+			</ul>
+
+			<p class="center"><img class="board2d" alt="Draw" src="images/draw.png"/>
+			<label>Black to move is in stalemate, since his king has no legal move, and is not in check. The game is drawn.</label></p>
+
+			<p>The player having the move may claim a draw by declaring that one of the following conditions exists, or by declaring
+			an intention to make a move which will bring about one of these conditions:</p>
+
+			<ul>
+				<li>Fifty-move rule: There has been no capture or pawn move in the last fifty moves by each player.</li>
+				<li>Threefold repetition: The same board position has occurred three times with the same player to move and all pieces
+				having the same rights to move, including the right to castle or capture en passant.</li>
+			</ul>
+
+			<p>If the claim is proven true, the game is drawn.</p>
+
+			<p>At one time, if a player was able to check the opposing king continually (perpetual check) and the player indicated
+			their intention to do so, the game was drawn. This rule is no longer in effect; however, players will usually agree to a
+			draw in such a situation, since either the rule on threefold repetition or the fifty-move rule will eventually be
+			applicable.</p>
+
+			</div>
+			<div class="box">
+
+			<h1>Notation</h1>
+
+			<p>Since <b>Edgy Chess</b> is using the same board, pieces, and movements as classic chess, all types of
+			<a href="http://en.wikipedia.org/wiki/Chess_notation" target="_blank">Chess Notation</a> may be used.</p>
+
+			<p class="center"><img class="classicboard2d" alt="Edgy Chess Setup" src="images/notation-init.png"/>
+			<label>Alternative graphic for Edgy Chess setup</label></p>
+
+			<p>On this website, we use the player view for showing Edgy Chess boards and pieces. However, as an alternative
+			graphical presentation of an Edgy Chess game, one can certainly use the traditional graphics for chess.</p>
+
+			<p class="center"><img class="classicboard2d" alt="Game of Edgy Chess" src="images/notation-game.png"/>
+			<label>Graphic of Edgy Chess game</label></p>
+
+			</div>
+			<div class="box">
+
+			<h1>Attribution</h1>
+
+			<p>Some of the text above was extracted from Wikipedia, under <a href="http://creativecommons.org/licenses/by-sa/3.0/"
+			target="_blank">Creative Commons Attribution-ShareAlike 3.0 License</a> and adapted to the rules of <b>Edgy Chess</b>.
+			For more details and references, please access the original articles about the
+			<a href="http://en.wikipedia.org/wiki/Rules_of_chess" target="_blank">Rules of Chess</a> and
+			<a href="http://en.wikipedia.org/wiki/Legan_chess" target="_blank">Legan Chess</a>.</p>
+
+			</div>
+<!--END-->
+		</div>
+
+		<div class="footer">
+			<div class="madeby">
+				Made with <span class="love"><img alt="Pounding Heart" src="images/heart.gif" width="25" height="25"></span> by <a target="_blank" href="https://twitter.com/edgebernard">Edge</a> and <a target="_blank" href="https://twitter.com/marcfbe">Marc</a> Bernard &mdash;
+				<a href="javascript:;" data-enc-email="srrqonpx[at]rqtlpurff.pbz" class="links" data-wpel-link="ignore"><span id="postbote"></span><script type="text/javascript">document.getElementById("postbote").innerHTML = eval(decodeURIComponent("%27%66%65%65%64%62%61%63%6b%40%65%64%67%79%63%68%65%73%73%2e%63%6f%6d%27"))</script><noscript>*protected email*</noscript></a>.
+			</div>
+			<div class="copyright">Copyright &copy; 2020, Marc Bernard. All rights reserved.</div>
+		</div>
+	</div>
+  </body>
+</html>

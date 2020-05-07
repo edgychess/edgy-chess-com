@@ -1,0 +1,515 @@
+/*
+ * Chess variant: Edgy Chess
+ *
+ * Version: 1.0
+ * Author: Marc Bernard, 2017-08-01
+ *
+ * Copyright(c) 2017-2020. All rights reserved.
+ *
+ * http://www.edgychess.com/
+ */
+
+/* Dracula Theme Colors - https://draculatheme.com/contribute */
+/* MIT license - https://zenorocha.mit-license.org/ */
+
+.black {
+    color: #282a36; /* black */
+}
+.dark {
+    color: #383a59; /* dark */
+}
+.gray {
+    color: #44475a; /* gray */
+}
+.white {
+    color: #f8f8f2; /* white */
+}
+.blue {
+    color: #6272a4; /* blue */
+}
+.cyan {
+    color: #8be9fd; /* cyan */ 
+}
+.green  {
+    color: #50fa7b; /* green */
+}
+.orange  {
+    color: #ffb86c; /* orange */
+}
+.pink  {
+    color: #ff79c6; /* pink */
+}
+.purple  {
+    color: #bd93f9; /* purple */
+}
+.red {
+    color: #ff5555; /* red */
+}
+.yellow {
+    color: #f1fa8c; /* yellow */
+}
+
+/* Edgy Chess Design */
+
+* {
+    box-sizing: border-box;
+}
+html,body {
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    background-color: #383a59; /* dark */ 
+    color: #f8f8f2; /* white */
+    height: 100%;
+    margin: 0;
+}
+h1,h2,h3,h4 {
+    clear: both;
+}
+h1 {
+    font-family: "Righteous", Arial, Helvetica, sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: #ffb86c; /* orange */
+    margin-bottom: 20px;
+    text-align: center;
+}
+h2 {
+    font-family: "Righteous", Arial, Helvetica, sans-serif;
+    font-size: 36px;
+    font-weight: 400;    
+    color: #ff79c6; /* pink */
+    margin-bottom: 10px;
+    text-align: center;
+}
+h3 {
+    font-size: 30px;
+    font-weight: 400;    
+    color: #bd93f9; /* purple */
+    text-align: center;
+}
+h4 {
+    font-size: 24px;
+    font-weight: 400;    
+    color: #8be9fd; /* cyan */  
+    text-align: center;
+}
+::selection  {
+    background-color: #50fa7b; /* green */
+    color: #44475a; /* gray */
+}
+
+a,
+a:visited {
+    color: #8be9fd; /* cyan */
+    transition: all .3s linear;
+    text-decoration: none;
+}
+a:focus, 
+a:active,
+a:hover {
+    color: #ffb86c; /* orange */
+    text-decoration: underline;
+}
+.menuitem a,
+.menuitem a:visited {
+    color: #f8f8f2; /* white */
+}
+.menuitem a:focus, 
+.menuitem a:active,
+.menuitem a:hover {
+    color: #ffb86c; /* orange */
+    text-decoration: underline;
+}
+
+.center {
+    text-align: center;
+}
+.large {
+    font-size: 30px;
+}
+
+table {
+    background-color: #383a59; /* dark */
+    border: 1px solid #44475a; /* gray */
+    width: 100%;
+}
+thead {
+    background-color: #282a36; /* black */
+}
+tr {
+    border: 1px solid #44475a; /* gray */
+}
+td {
+    padding: 5px;
+}
+table.plain {
+    background-color: none;
+    border: none;
+}
+tr.plain {
+    border: none;
+}
+td.charity {
+    vertical-align: center;
+    height: 80px;
+}
+label {
+    display: block;
+    color: #ffb86c; /* orange */
+    font-size: 18px;
+}
+
+
+/* Button */
+
+.button,
+.button:visited {
+    display: inline-block;
+    transition: all .3s ease-in-out;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px 18px;
+    background: #8be9fd !important; /* cyan */ 
+    color: #282a36 !important; /* black */
+    text-decoration: none;
+    text-align: center;
+    border: 0;
+    border-radius: 4px;
+    font-size: 20px;
+}
+
+.button:active, 
+.button:focus, 
+.button:hover {
+    background: #ffb86c !important; /* orange */
+    color: #282a36 !important; /* black */
+    text-decoration: none !important;
+}
+
+/* Container with applet and controls */
+
+#favicon {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+#applet-loading {
+    margin: 200px auto;
+}
+#game-loading {
+    position: absolute;
+    right: 20px;
+}
+#title {
+    font-family: "Righteous", Arial, Helvetica, sans-serif;
+    display: inline-block;
+    width: 100%;
+}
+
+#container {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+#jocly-applet {
+    position: relative;
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+}
+
+#progress-bar {
+    position: absolute;
+    display: none;
+    background-color: #50fa7b; /* green */ 
+    height: 10px;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+    transition: width .5s;
+    z-index: 10;
+}
+
+/* Panels */
+
+.sidepanel {
+    display: table-cell;
+    vertical-align: top;
+    padding: 0 10px;
+    width: 333px;
+}
+
+.header-box {
+    background-color: #282a36; /* black */
+    border: 1px solid #44475a; /* gray */
+    border-radius: 1em;
+    font-family: "Righteous", Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    text-align: center;
+    margin: 8px 0 8px 0;
+    padding: 1em;
+}
+.header-box .links {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.sidepanel .box {
+    font-size: 16px;
+}
+.box {
+    max-width: 1280px;
+    background-color: #44475a; /* gray */
+    border: 1px solid #282a36; /* black */
+    border-radius: 1em;
+    color: #f8f8f2; /* white */
+    margin: 10px auto 10px;
+    padding: 1em;
+    text-align: left;
+}
+.sidepanel .box h2 {
+    color: #ffb86c; /* orange */
+    font-size: 20px;
+    text-align: left;
+    margin: 0;
+}
+.sidepanel .box label {
+    color: #f8f8f2; /* white */
+    font-size: 16px;
+}
+.sidepanel .box label select {
+    margin-left: 10px;
+}
+.box button {
+    margin: 3px 0 3px 3px;
+}
+.box-inside-open {
+    display: block;
+    margin-top: 1em;
+}
+.box-inside-close {
+    display: none;
+    margin-top: 1em;
+}
+.box-toggle {
+    display: block;
+    overflow: hidden;
+    float: right;
+    background-image: url("images/expand.png");
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    top: 4px;
+    right: 3px;
+    text-indent: -50px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.box-toggle-open {
+    background-position: 0 0;
+}
+.box-toggle-close {
+    background-position: 0 -20px;
+}
+
+nav {
+    position: fixed;
+    display: flex;
+    background: #282a36; /* black */
+    width: 100%;
+    height: 70px;
+    padding: 5px;
+    align-items: center;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,.15);
+    justify-content: space-between;
+    font-size: 24px;
+    z-index: 1;
+}
+#title {
+    display: inline-block;
+    font-family: "Righteous", Arial, Helvetica, sans-serif;
+    width: 100%;
+    margin-left: 10px;
+}
+nav ul {
+    display: flex;
+    width: 100%;
+    list-style: none;
+    align-items: center;
+    justify-content: flex-end;
+}
+nav ul li {
+    display: inline-block;
+}
+nav ul li a {
+    border-bottom: 2px solid transparent;
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.main {
+    padding: 100px 0 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+.main #donate {
+    padding-top: 30px;
+}
+
+.play {
+    background-color: #44475a; /* gray */
+    padding: 100px 0 100px;
+    text-align: center;
+}
+.play #action {
+    margin-top: 30px;
+}
+
+.sidepanel .footer {
+    position: fixed;
+    width: 333px;
+    bottom: 0;
+    font-size: 16px;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 5px;
+    z-index: 10;
+}
+.fullpage .footer {
+    width: 100%;
+    padding: 30px;
+}
+.footer {
+    background: #282a36; /* black */
+    border: 1px solid #44475a; /* gray */
+    text-align: center;
+}    
+
+/* List of Games */
+
+#games {
+    width: 333px;
+    padding: 0 0 0 10px;
+}
+#rules {
+    width: 720px;
+    padding: 0 0 0 10px;
+}
+#games > div,
+#rules > div {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+#games > div > div,
+#rules > div > div {
+    position: absolute;
+    overflow-y: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+#game-header,
+#rule-header {
+    width: 100%;
+    margin: 0px;
+    padding: 8px;
+}
+#game-title {
+    font-family: "Righteous", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    color: #ffb86c; /* orange */
+}
+#game-subtitle {
+    color: #f8f8f2; /* white */
+    font-size: 12px;
+}
+#game-status {
+    color: #ff79c6; /* pink */
+}
+#game-list,
+#rule-text {
+    width: 100%;
+    margin: 0px;
+    padding: 8px;
+}
+#game-list {
+    font-size: 14px;
+}
+.game-descr {
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 32px;
+    padding: 4px 4px 4px 40px;
+    cursor: pointer;
+}
+.game-descr-edgy-chess {
+    background-color: #bd93f9; /* purple */
+}
+.game-descr-classic-chess {
+    background-color: #6272a4; /* blue */
+}
+.game-descr:hover {
+    background-color: #ffb86c; /* orange */
+}
+.game-descr-name {
+    font-weight: bold;
+}
+
+/* Chess board and pieces */
+
+.board3d {
+    width: 500px;
+}
+.board2d {
+    width: 617px;
+}
+.classicboard2d {
+    width: 481px;
+}
+.piece {
+    vertical-align: middle;
+    margin: 0 5px 5px 5px;
+}
+.piecename {
+    font-weight: bold;
+}
+
+/* Footer */
+
+.love {
+    display: inline-block;
+    position: relative;
+    top: 7px;
+    animation: love .5s linear infinite alternate-reverse;
+}
+.copyright {
+    margin-top: 10px;
+    font-size: .8em;
+}
+
+/* Responsive styles */
+
+/* Large screens */
+@media screen and (min-width: 1280px) {
+}
+
+/* Tablet screens (landscape) */
+@media screen and (max-width: 1024px) {
+}
+
+/* Tablet portrait */
+@media screen and (max-width: 800px) {
+}
+
+/* Smartphone */
+@media only screen and (max-width: 600px) {
+    .board3d {
+        width: 250px;
+    }
+    .board2d {
+        width: 300px;
+    }
+}

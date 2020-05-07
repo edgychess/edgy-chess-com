@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+/*
+ * Chess variant: Edgy Chess
+ *
+ * Version: 1.0
+ * Author: Marc Bernard, 2017-08-01
+ *
+ * Copyright(c) 2017-2020. All rights reserved.
+ *
+ * http://www.edgychess.com/
+ */
+-->
+<html lang="en">
+  <head>
+	<title>Edgy Chess by Edge and Marc Bernard</title>
+    <meta charset="utf-8">
+	<meta name="robots"             content="index, follow">
+	<meta name="viewport"           content="width=device-width"/>
+	<meta name="twitter:card"       content="summary" />
+	<meta name="description"        content="Edgy Chess is a new and edgy chess variant that looks like chess but plays like a different game"/>
+	<meta name="author"             content="Edge and Marc Bernard"/>
+	<meta name="keywords"           content="chess,variant,edge,corner"/>
+	<meta property="og:type"        content="website"/>
+	<meta property="og:title"       content="Edgy Chess - A New and Edgy Chess Variant for Everyone" />
+	<meta property="og:description" content="Edgy Chess is a new and edgy chess variant that looks like chess but plays like a different game"/>
+	<meta property="og:url"         content="http://www.edgychess.com"/>
+	<meta property="og:image"       content="http://www.edgychess.com/images/edgy-chess-2d.png"/>
+	<link rel="stylesheet"          href="https://fonts.googleapis.com/css?family=Righteous" type="text/css" media="all" />
+	<link rel="stylesheet"          href="https://fonts.googleapis.com/css?family=Open+Sans" type="text/css" media="all" />
+	<link rel="stylesheet"          href="edgy-chess.css" />
+	<link rel="icon"                href="favicon.png" type="image/png" />
+
+	<script
+	  src="https://code.jquery.com/jquery-3.5.0.min.js"
+	  integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+	  crossorigin="anonymous"></script>
+
+	<script src="edgy-chess.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-165238093-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+	  gtag('config', 'UA-165238093-1');
+	</script>
+  </head>
+
+  <body>
+	<div id="container" class="fullpage">
+
+		<nav class="header">
+			<p id="title" class="menuitem"><img id="favicon" src="favicon.png" alt="Edgy Chess Icon" width="48" height="48"/><a href="index.html">Edgy Chess</a></p>
+			<ul class="menu">
+				<li class="menuitem"><a href="play.html">Play</a></li>
+				<li class="menuitem"><a href="rules.html">Rules</a></li>
+				<li class="menuitem"><a href="about.html">About</a></li>
+				<li class="menuitem"><a href="donate.html" class="button">Donate</a></li>
+			</ul>
+		</nav>
+
+		<div class="main">
+			<div><img class="board3d" alt="3D View of Edgy Chess Setup" src="images/Edgy_Chess_Setup_3d.png"/></div>
+			<h1>Edgy Chess</h1>
+			<p class="center large">A New and Edgy Chess Variant for Everyone</p>
+			<div id="main-action"><a href="play.html" class="button">Play Edgy Chess!</a></div>
+		</div>
+
+		<div class="play">
+			<h2>How to Play</h2>
+			<p class="center">Turn your board 45 degrees and setup the pieces starting with your king in your corner as shown below:</p>
+			<div><img class="board2d" src="images/setup.png" alt="Setup of Edgy Chess"/></div>
+			<p class="center">Pawns move diagonally forward <i>one</i> step at a time (<img src="images/move-black-small.png" alt="Move"/>)
+			and capture to the side of their path (<img src="images/capture-black-small.png" alt="Capture"/>).<br/>
+			Pawns are promoted on the opponents non-pawn fields (<img src="images/promote-white-small.png" alt="Promote"/>).<br/>
+			Castling is allowed but there is <i>no en passant</i>.<br/>
+			All other rules are like in classic chess. For details see the <a href="images-rules.html">rules</a>.</p>
+			<div id="play-action"><a href="play.html" class="button">Play Edgy Chess!</a></div>
+		</div>
+
+		<div class="main">
+			<h2>Spread Some Love</h2>
+			<p class="center">If you like Edgy Chess, please donate what you can to the good causes supported by our foundation.</p>
+			<div><a href="donate.html" class="button">Donate</a></div>
+			<p class="center">Thank you so much!</p>
+		</div>
+
+		<div class="footer">
+			<div class="madeby">
+				Made with <span class="love"><img alt="Pounding Heart" src="images/heart.gif" width="25" height="25"></span> by <a target="_blank" href="https://twitter.com/edgebernard">Edge</a> and <a target="_blank" href="https://twitter.com/marcfbe">Marc</a> Bernard &mdash;
+				<a href="javascript:;" data-enc-email="srrqonpx[at]rqtlpurff.pbz" class="links" data-wpel-link="ignore"><span id="postbote"></span><script type="text/javascript">document.getElementById("postbote").innerHTML = eval(decodeURIComponent("%27%66%65%65%64%62%61%63%6b%40%65%64%67%79%63%68%65%73%73%2e%63%6f%6d%27"))</script><noscript>*protected email*</noscript></a>
+			</div>
+			<div class="copyright">Copyright &copy; 2020, Marc Bernard. All rights reserved.</div>
+		</div>
+	</div>
+  </body>
+</html>
